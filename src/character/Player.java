@@ -1,17 +1,19 @@
 package character;
 
+import java.awt.Point;
+
 public class Player {
-	private Location myLocation;
+	private Point myLocation;
 	
-	public Player(Location loc){
+	public Player(Point loc){
 		this.myLocation = loc;
 	}
 
-	public Location getMyLocation() {
+	public Point getMyLocation() {
 		return this.myLocation;
 	}
 	
-	public void setMyLocation(Location myLocation) {
+	public void setMyLocation(Point myLocation) {
 		this.myLocation = myLocation;
 	}
 }
