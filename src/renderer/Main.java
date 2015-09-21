@@ -1,9 +1,6 @@
-package chickenlittle;
+package renderer;
 
 import javax.swing.JFrame;
-
-import renderer.Render;
-import renderer.RenderPane;
 
 /**
  * This method will make a new frame and display a 2d array of chars
