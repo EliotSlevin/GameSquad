@@ -1,11 +1,13 @@
 package levels;
 
+import gui.UserInterface;
+
+import java.awt.Point;
+
 import tiles.EmptyTile;
 import tiles.Tile;
 import tiles.Wall;
-import character.Location;
 import character.Player;
-import chickenlittle.gui.UserInterface;
 
 public class Level {
 	private static final int WIDTH = 25;
@@ -45,7 +47,7 @@ public class Level {
 	
 	
 	private void setupPlayer() {
-		player = new Player(new Location(1, 1));
+		player = new Player(new Point(1, 1));
 	}
 	
 	public void moveLeft() {
@@ -71,14 +73,12 @@ public class Level {
 	
 	public char[][] getLevelImg() {
 		char[][] array = new char[HEIGHT][WIDTH];
-		for (int x = 0; x < WIDTH; x++) {
-			for (int y = 0; y < HEIGHT; y++) {
+		for (int x = 0; x < WIDTH; x++)
+			for (int y = 0; y < HEIGHT; y++) 
 				array[y][x] = tiles[y][x].toString().charAt(0);
-			}
-		}
-		
-		Location l = player.getMyLocation();
-		array[l.getY()][l.getX()] = player.toString().charAt(0);
+
+		Point loc = player.getMyLocation();
+		array[loc.y][loc.x] = player.toString().charAt(0);
 		
 		return array;
 	}
