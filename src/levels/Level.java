@@ -1,6 +1,10 @@
 package levels;
 
 import tiles.EmptyTile;
+import character.Character;
+import character.Moveable;
+import character.Location;
+import character.Player;
 import tiles.Tile;
 import tiles.Wall;
 
@@ -15,6 +19,8 @@ public class Level {
 		tiles = new Tile[HEIGHT][WIDTH];
 		characters = new Character[1];
 		setupEmptyTiles();
+		setupWalls();
+		setupPlayer();
 	}
 	
 	private void setupEmptyTiles() {

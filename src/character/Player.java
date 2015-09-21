@@ -11,7 +11,7 @@ public class Player implements Character, Moveable {
 		this.myLocation = myLocation;
 	}
 
-	Player(Location loc){
+	public Player(Location loc){
 		this.myLocation = loc;
 	}
 	
