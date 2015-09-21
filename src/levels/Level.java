@@ -14,6 +14,7 @@ public class Level {
 	
 	private Tile[][] tiles;
 	private Character[] characters;
+	public static Player temp;
 	
 	public Level() {
 		tiles = new Tile[HEIGHT][WIDTH];
@@ -55,6 +56,7 @@ public class Level {
 			}
 		}
 		Character c = characters[0];
+		temp = (Player) characters[0];
 		Location l = ((Player) c).getMyLocation();
 		array[l.getY()][l.getX()] = c.toString().charAt(0);
 		

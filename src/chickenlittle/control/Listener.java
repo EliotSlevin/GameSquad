@@ -11,6 +11,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
+import levels.Level;
 import chickenlittle.gui.BoardCanvas;
 import chickenlittle.gui.BoardFrame;
 import chickenlittle.gui.TextUI;
@@ -27,6 +28,7 @@ public class Listener implements KeyListener, MouseListener, ActionListener {
 	private int DIR = 0;
 	
 	private final TextUI ui = new TextUI();
+	private final Level lev = new Level();
 	
 	private final Actions[] ACTIONS;	// All possible movements the player may make
 	
@@ -103,9 +105,11 @@ public class Listener implements KeyListener, MouseListener, ActionListener {
 		for (Actions ac : ACTIONS){
 			if (ac.getKeyCode() == event){
 				// TODO ac.ordinal()   to be sent through connection
-				//if (Actions.NORTH == ac){
+				if (Actions.NORTH == ac){
 					System.out.println("action");
-				//}
+					Level.temp.moveUp();
+					ui.repaint();
+				}
 				return;
 			}
 		}
