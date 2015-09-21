@@ -1,12 +1,18 @@
 package chickenlittle.gui;
 
+import javax.swing.JFrame;
+
 import levels.Level;
 
 public class UserInterface {
 	private Level level;
+	private RenderPane render; 
+	private JFrame frame;
 	
 	public UserInterface(Level level) {
 		this.level = level;
+		frame = new JFrame();
+		renderer = new RenderPane();
 	}
 	
 	public void redraw(char[][] levelImg) {

@@ -5,6 +5,7 @@ import tiles.Tile;
 import tiles.Wall;
 import character.Location;
 import character.Player;
+import chickenlittle.gui.UserInterface;
 
 public class Level {
 	private static final int WIDTH = 25;
@@ -13,7 +14,7 @@ public class Level {
 	private Tile[][] tiles;
 	private Player player;
 	private UserInterface ui;
-	private GameLogic logic;
+//	private GameLogic logic;
 	
 	public Level() {
 		tiles = new Tile[HEIGHT][WIDTH];
@@ -48,22 +49,22 @@ public class Level {
 	}
 	
 	public void moveLeft() {
-		if (logic.moveLeft())
+		//if (logic.moveLeft())
 			ui.redraw(getLevelImg());
 	}
 	
 	public void moveRight() {
-		if (logic.moveRight())
+		//if (logic.moveRight())
 			ui.redraw(getLevelImg());
 	}
 	
 	public void moveUp() {
-		if (logic.moveUp())
+		//if (logic.moveUp())
 			ui.redraw(getLevelImg());
 	}
 	
 	public void moveDown() {
-		if (logic.moveDown())
+		//if (logic.moveDown())
 			ui.redraw(getLevelImg());
 	}
 	
