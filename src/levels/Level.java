@@ -1,25 +1,22 @@
 package levels;
 
 import tiles.EmptyTile;
-import character.Character;
-import character.Moveable;
-import character.Location;
-import character.Player;
 import tiles.Tile;
 import tiles.Wall;
+import character.Location;
+import character.Player;
 
 public class Level {
 	private static final int WIDTH = 25;
 	private static final int HEIGHT = 25;
 	
 	private Tile[][] tiles;
-	private Character[] characters;
-	public static Player temp;
-	public static char[][] hackyArray;
+	private Player player;
+	private UserInterface ui;
+	private GameLogic logic;
 	
 	public Level() {
 		tiles = new Tile[HEIGHT][WIDTH];
-		characters = new Character[1];
 		setupEmptyTiles();
 		setupWalls();
 		setupPlayer();
@@ -45,22 +42,42 @@ public class Level {
 		}
 	}
 	
+	
 	private void setupPlayer() {
-		characters[0] = new Player(new Location(1, 1));
+		player = new Player(new Location(1, 1));
 	}
 	
-	public char[][] getLevel() {
+	public void moveLeft() {
+		if (logic.moveLeft())
+			ui.redraw(getLevelImg());
+	}
+	
+	public void moveRight() {
+		if (logic.moveRight())
+			ui.redraw(getLevelImg());
+	}
+	
+	public void moveUp() {
+		if (logic.moveUp())
+			ui.redraw(getLevelImg());
+	}
+	
+	public void moveDown() {
+		if (logic.moveDown())
+			ui.redraw(getLevelImg());
+	}
+	
+	
+	public char[][] getLevelImg() {
 		char[][] array = new char[HEIGHT][WIDTH];
 		for (int x = 0; x < WIDTH; x++) {
 			for (int y = 0; y < HEIGHT; y++) {
 				array[y][x] = tiles[y][x].toString().charAt(0);
 			}
 		}
-		Character c = characters[0];
-		temp = (Player) characters[0];
-		Location l = ((Player) c).getMyLocation();
-		array[l.getY()][l.getX()] = c.toString().charAt(0);
-		hackyArray = array;
+		
+		Location l = player.getMyLocation();
+		array[l.getY()][l.getX()] = player.toString().charAt(0);
 		
 		return array;
 	}
