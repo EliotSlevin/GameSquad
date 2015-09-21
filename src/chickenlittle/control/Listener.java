@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.net.Socket;
 
 import levels.Level;
+import character.Location;
 import chickenlittle.gui.BoardCanvas;
 import chickenlittle.gui.BoardFrame;
 import chickenlittle.gui.TextUI;
@@ -106,10 +107,22 @@ public class Listener implements KeyListener, MouseListener, ActionListener {
 			if (ac.getKeyCode() == event){
 				// TODO ac.ordinal()   to be sent through connection
 				if (Actions.NORTH == ac){
-					System.out.println("action");
+					Location previous = Level.temp.getMyLocation();
+					Level.temp.moveDown();
+					ui.repaint(previous, Level.temp);
+				} else if (Actions.SOUTH == ac){
+					Location previous = Level.temp.getMyLocation();
 					Level.temp.moveUp();
-					ui.repaint();
-				}
+					ui.repaint(previous, Level.temp);
+				} else if (Actions.EAST == ac){
+					Location previous = Level.temp.getMyLocation();
+					Level.temp.moveRight();
+					ui.repaint(previous, Level.temp);
+				} else if (Actions.WEST == ac){
+					Location previous = Level.temp.getMyLocation();
+					Level.temp.moveLeft();
+					ui.repaint(previous, Level.temp);
+				} 
 				return;
 			}
 		}
