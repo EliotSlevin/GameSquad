@@ -95,7 +95,7 @@ public class Listener implements KeyListener, MouseListener, ActionListener {
 				// update movement
 				// send new 2D Array to TextUI
 				// TODO ROTATION[send].ordinal()  to be sent through connection
-				return;
+				// return;
 			}
 		}
 
@@ -103,6 +103,9 @@ public class Listener implements KeyListener, MouseListener, ActionListener {
 		for (Actions ac : ACTIONS){
 			if (ac.getKeyCode() == event){
 				// TODO ac.ordinal()   to be sent through connection
+				//if (Actions.NORTH == ac){
+					System.out.println("action");
+				//}
 				return;
 			}
 		}
