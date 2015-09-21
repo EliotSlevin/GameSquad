@@ -46,4 +46,9 @@ public class Level {
 	private void setupPlayer() {
 		characters[0] = new Player(new Location(1, 1));
 	}
+	
+	public char[][] getLevel() {
+		char[][] array = new char[HEIGHT][WIDTH];
+		return array;
+	}
 }
