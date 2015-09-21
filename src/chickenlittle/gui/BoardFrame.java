@@ -11,6 +11,7 @@ import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextPane;
 
 import chickenlittle.control.Listener;
 
@@ -18,6 +19,7 @@ public class BoardFrame extends JFrame {
 	private final JPanel BORDER = new JPanel();
 	private final Listener LISTENER;
 	private final BoardCanvas CANVAS;		// Rendering window
+	private JTextPane text = new JTextPane();
 	
 	/**
 	 * Sets up the window to display the Cluedo game and all controls/menus.
@@ -29,11 +31,13 @@ public class BoardFrame extends JFrame {
 		CANVAS = renderingWindow;
 		CANVAS.setFocusable(true);
 		
+		text.setEditable(false);
+		
 		addListeners();
 		
 		/* TODO all layers */
 		BORDER.setLayout(new BorderLayout());
-		BORDER.add(CANVAS, BorderLayout.CENTER);
+		BORDER.add(text, BorderLayout.CENTER);
 		this.add(BORDER);
 		
 		/* TODO set layer sizes, positioning & decoration */
@@ -47,7 +51,7 @@ public class BoardFrame extends JFrame {
 	 * Requests confirmation and closes the system if player tries to close the window.
 	 */
 	private void addListeners(){
-		CANVAS.addKeyListener(LISTENER);
+		text.addKeyListener(LISTENER);
 		CANVAS.addMouseListener(LISTENER);
 		CANVAS.addFocusListener(new FocusAdapter() {		// Reclaim focus when lost
 	          public void focusLost(FocusEvent ev) {

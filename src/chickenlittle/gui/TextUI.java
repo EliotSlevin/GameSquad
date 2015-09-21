@@ -1,9 +1,16 @@
 package chickenlittle.gui;
 
+import levels.Level;
+
 public class TextUI {
 	private char[][] array;
 	
-	public TextUI(char[][] array){
+	public TextUI(){
+		Level lev = new Level();
+		array = lev.getLevel();
+	}
+	
+	public void setArray(char[][] array){
 		this.array = array;
 	}
 	

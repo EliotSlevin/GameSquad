@@ -13,6 +13,7 @@ import java.net.Socket;
 
 import chickenlittle.gui.BoardCanvas;
 import chickenlittle.gui.BoardFrame;
+import chickenlittle.gui.TextUI;
 import chickenlittle.control.Action.Actions;
 
 /**
@@ -24,6 +25,8 @@ public class Listener implements KeyListener, MouseListener, ActionListener {
 	// Stores the direction the screen is currently being stored at. Key Events are be rotated to match, must remain in this order.
 	private final Actions[] ROTATION = new Actions[]{Actions.NORTH, Actions.EAST, Actions.SOUTH, Actions.WEST};
 	private int DIR = 0;
+	
+	private final TextUI ui = new TextUI();
 	
 	private final Actions[] ACTIONS;	// All possible movements the player may make
 	
@@ -89,6 +92,8 @@ public class Listener implements KeyListener, MouseListener, ActionListener {
 			if (ROTATION[i].getKeyCode() == event){
 				int send = i + DIR;			// If the screen has been rotated, the direction will be changed.
 				if (send > 3){ send -= 4; }
+				// update movement
+				// send new 2D Array to TextUI
 				// TODO ROTATION[send].ordinal()  to be sent through connection
 				return;
 			}
