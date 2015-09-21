@@ -1,10 +1,6 @@
 package character;
 
 public class Location {
-
-	/**
-	 * x and y locations
-	 */
 	private int x;
 	private int y;
 

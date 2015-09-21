@@ -28,9 +28,6 @@ public class Listener implements KeyListener, MouseListener, ActionListener {
 	private final Actions[] ROTATION = new Actions[]{Actions.NORTH, Actions.EAST, Actions.SOUTH, Actions.WEST};
 	private int DIR = 0;
 	
-	private final TextUI ui = new TextUI();
-	private final Level lev = new Level();
-	
 	private final Actions[] ACTIONS;	// All possible movements the player may make
 	
 	// TODO Network Connection information here ...
