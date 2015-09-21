@@ -49,6 +49,15 @@ public class Level {
 	
 	public char[][] getLevel() {
 		char[][] array = new char[HEIGHT][WIDTH];
+		for (int x = 0; x < WIDTH; x++) {
+			for (int y = 0; y < HEIGHT; y++) {
+				array[y][x] = tiles[y][x].toString().charAt(0);
+			}
+		}
+		Character c = characters[0];
+		Location l = ((Player) c).getMyLocation();
+		array[l.getY()][l.getX()] = c.toString().charAt(0);
+		
 		return array;
 	}
 }
