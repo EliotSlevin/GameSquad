@@ -5,6 +5,8 @@ import gamelogic.GameLogic;
 import java.awt.Point;
 
 import renderer.Render;
+import tiles.Chest;
+import tiles.Door;
 import tiles.EmptyTile;
 import tiles.Tile;
 import tiles.Wall;
@@ -25,9 +27,10 @@ public class Level {
 		setupEmptyTiles();
 		setupWalls();
 		setupPlayer();
+		setUpChest();
 		setupGameLogic();
 	}
-	
+
 	private void setupEmptyTiles() {
 		for (int x = 0; x < WIDTH; x++) {
 			for (int y = 0; y < HEIGHT; y++) {
@@ -52,6 +55,11 @@ public class Level {
 		player = new Player(new Point(2, 2));
 	}
 	
+	private void setUpChest() {
+		tiles[1][1] = new Chest();
+		tiles[0][3] = new Door();
+	}
+	
 	private void setupGameLogic() {
 		logic = new GameLogic(tiles);
 	}
@@ -74,6 +82,11 @@ public class Level {
 	
 	public void moveDown() {
 		if (logic.moveDown(player))
+			ui.redraw(getLevelImg());
+	}
+	
+	public void interact() {
+		if (logic.interact(player))
 			ui.redraw(getLevelImg());
 	}
 	

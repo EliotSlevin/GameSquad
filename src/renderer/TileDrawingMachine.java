@@ -47,6 +47,28 @@ public class TileDrawingMachine {
         g2.fillPolygon(xlPoints, ylPoints, 4);
 
     }
+    
+    protected void drawBlackCubeTile(Graphics2D g2, int x, int y){
+        // top bit
+        int xPoints[] = {x, x + (tilesize / 2), x, x - (tilesize / 2)};
+        int yPoints[] = {y, y - (tilesize / 4), y - (tilesize / 2), y - (tilesize / 4)};
+
+        int xrPoints[] = {x, x + (tilesize / 2), x + (tilesize / 2), x};
+        int yrPoints[] = {y, y - (tilesize / 4), y + (tilesize / 4), y + (tilesize / 2)};
+
+        int xlPoints[] = {x, x - (tilesize / 2), x - (tilesize / 2), x};
+        int ylPoints[] = {y, y - (tilesize / 4), y + (tilesize / 4), y + (tilesize / 2)};
+
+        g2.setPaint(Color.BLACK);
+        g2.fillPolygon(xPoints, yPoints, 4);
+
+        g2.setPaint(Color.BLACK);
+        g2.fillPolygon(xrPoints, yrPoints, 4);
+
+        g2.setPaint(Color.BLACK);
+        g2.fillPolygon(xlPoints, ylPoints, 4);
+
+    }
 
     protected void drawHalfCubeTile(Graphics2D g2, int x, int y){
         // top bit

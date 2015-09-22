@@ -22,6 +22,8 @@ public class Listener implements KeyListener{
 			level.moveLeft();
 		} else if (e.getKeyCode() == KeyEvent.VK_D){
 			level.moveRight();
+		} else if (e.getKeyCode() == KeyEvent.VK_E){
+			level.interact();
 		} else {
 			System.out.println("You fucked up");
 		}

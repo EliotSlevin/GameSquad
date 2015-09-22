@@ -45,8 +45,8 @@ public class RenderPane extends JPanel {
     private void paintLayer(Graphics2D g2, int depth, char[][] layer){
 
         // Will find better system later
-        int numberOfRows = 4;
-        int numberOfColums = 4;
+        int numberOfRows = 5;
+        int numberOfColums = 5;
 
         g2.setStroke(new BasicStroke(1));
 
@@ -67,6 +67,12 @@ public class RenderPane extends JPanel {
 
                     case 'p': tilePainter.drawCharachter(g2, isoTile.x, isoTile.y);
                         break;
+                        
+                    case 'c': tilePainter.drawHalfCubeTile(g2, isoTile.x, isoTile.y);
+                    	break;
+                    	
+                    case 'd': tilePainter.drawBlackCubeTile(g2, isoTile.x, isoTile.y);
+                    	break;
                 }
             }
         }

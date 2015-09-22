@@ -2,6 +2,8 @@ package gamelogic;
 
 import java.awt.Point;
 
+import tiles.Chest;
+import tiles.Door;
 import tiles.EmptyTile;
 import tiles.Tile;
 import character.Player;
@@ -21,7 +23,7 @@ public class GameLogic {
 		if(tile instanceof EmptyTile){
 			p.setMyLocation(next);
 			return true;
-		}
+		} 
 		return false;
 	}
 	
@@ -57,7 +59,49 @@ public class GameLogic {
 		if(tile instanceof EmptyTile){
 			p.setMyLocation(next);
 			return true;
+		} 
+		return false;
+	}
+	
+	public boolean interact(Player p){
+		Point now = p.getMyLocation();
+		Point[] possibleMoves = new Point[4];
+		
+		possibleMoves[0] = new Point(now.x-1, now.y);
+		possibleMoves[1] = new Point(now.x+1, now.y);
+		possibleMoves[2] = new Point(now.x, now.y-1);
+		possibleMoves[3] = new Point(now.x, now.y+1);
+		
+		for (int i = 0; i < 4; i++){
+			Tile tile = tiles[possibleMoves[i].x][possibleMoves[i].y];
+			if (tile instanceof Chest){
+				openChest((Chest)tile, p);
+				return true;
+			} 
+			if (tile instanceof Door){
+				if (openDoor((Door) tile, p) == true){
+					tiles[possibleMoves[i].x][possibleMoves[i].y] = new EmptyTile();
+					return true;
+				}
+			} 
 		}
 		return false;
+		
+	}
+
+	private boolean openDoor(Door tile, Player p) {
+		if (p.getInven().contains("key")){
+			tile.openDoor();
+			return true;
+		}
+		return false;
+	}
+
+	private void openChest(Chest tile, Player p) {
+		if (tile.getState() == true){
+			tile.emptyChest();
+			p.addToInven("key");
+			p.testInven();
+		}		
 	}
 }
