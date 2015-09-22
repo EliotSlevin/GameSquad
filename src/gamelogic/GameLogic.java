@@ -73,14 +73,14 @@ public class GameLogic {
 		possibleMoves[3] = new Point(now.x, now.y+1);
 		
 		for (int i = 0; i < 4; i++){
-			Tile tile = tiles[possibleMoves[i].x][possibleMoves[i].y];
+			Tile tile = tiles[possibleMoves[i].y][possibleMoves[i].x];
 			if (tile instanceof Chest){
 				openChest((Chest)tile, p);
 				return true;
 			} 
 			if (tile instanceof Door){
 				if (openDoor((Door) tile, p) == true){
-					tiles[possibleMoves[i].x][possibleMoves[i].y] = new EmptyTile();
+					tiles[possibleMoves[i].y][possibleMoves[i].x] = new EmptyTile();
 					return true;
 				}
 			} 
@@ -90,7 +90,7 @@ public class GameLogic {
 	}
 
 	private boolean openDoor(Door tile, Player p) {
-		if (p.getInven().contains("key")){
+		if (p.getInven().size() > 0){
 			tile.openDoor();
 			return true;
 		}
@@ -100,7 +100,7 @@ public class GameLogic {
 	private void openChest(Chest tile, Player p) {
 		if (tile.getState() == true){
 			tile.emptyChest();
-			p.addToInven("key");
+			p.addToInven(tile.getKey());
 			p.testInven();
 		}		
 	}

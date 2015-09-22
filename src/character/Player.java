@@ -1,12 +1,14 @@
 package character;
 
+import item.Item;
+
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
 	private Point myLocation;
-	private List<String> inventory = new ArrayList<String>();
+	private List<Item> inventory = new ArrayList<Item>();
 	
 	public Player(Point loc){
 		this.myLocation = loc;
@@ -20,17 +22,17 @@ public class Player {
 		this.myLocation = myLocation;
 	}
 	
-	public List<String> getInven(){
+	public List<Item> getInven(){
 		return inventory;
 	}
 	
-	public void addToInven(String item){
+	public void addToInven(Item item){
 		inventory.add(item);
 	}
 	
 	public void testInven(){
-		for (String s : inventory){
-			System.out.println(s);
+		for (Item s : inventory){
+			System.out.println(s.toString());
 		}
 	}
 	
